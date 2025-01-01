@@ -1,0 +1,192 @@
+.navigation {
+
+    &__open {
+        transform: scale(80);
+    }
+
+    &__button {
+
+        background-color: $color-white;
+        height: 7rem;
+        width: 7rem;
+
+        position: fixed;
+        top: 6rem;
+        right: 6rem;
+
+        border-radius: 50%;
+        border: none;
+
+        z-index: 5;
+
+        box-shadow: 0 1rem 3rem rgba($color-black, .1);
+
+        cursor: pointer;
+
+        @include respond (tab-port) {
+            top: 4rem;
+            right: 4rem;
+        }
+
+        @include respond (tabhone) {
+            top: 3rem;
+            right: 3rem;
+        }
+    }
+
+    &__background {
+        height: 6rem;
+        width: 6rem;
+
+        border-radius: 50%;
+
+        position: fixed;
+        top: 6.5rem;
+        right: 6.5rem;
+
+        background-image: radial-gradient($color-primary-light, $color-primary-dark);
+
+        z-index: 4;
+
+        transition: all .8s;
+
+        @include respond (tab-port) {
+            top: 4.5rem;
+            right: 4.5rem;
+        }
+
+        @include respond (tabhone) {
+            top: 3.5rem;
+            right: 3.5rem;
+        }
+    }
+
+    &__nav {
+        width: 100vw;
+        height: 100vh;
+
+        position: fixed;
+        top: 0;
+        right: 0;
+
+        z-index: 4;
+
+    }
+
+    &__list {
+
+        @include absCenter;
+
+        width: 35rem;
+
+        list-style: none;
+
+        text-align: center;
+
+    }
+
+    &__item {
+        margin: 1rem;
+    }
+
+    &__link {
+
+        &:link,
+        &:visited {
+            display: inline-block;
+
+            font-size: 3rem;
+            font-weight: 300;
+            color: $color-white;
+            text-decoration: none;
+            text-transform: uppercase;
+
+            padding: 1rem 2rem;
+
+            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, white 50%);
+
+            background-size: 230%;
+
+            transition: all .3s;
+
+
+            span {
+                margin-right: 1.5rem;
+                display: inline-block;
+            }
+
+        }
+
+        &:active,
+        &:hover {
+            background-position: 100%;
+
+            color: $color-primary;
+
+            transform: translateX(1rem);
+        }
+
+    }
+
+    &__icon {
+        margin-top: 1.3rem;
+
+        position: relative;
+
+        &,
+        &::before,
+        &::after {
+            width: 3rem;
+            height: 2px;
+
+            background-color: $color-grey-dark-3;
+
+            display: inline-block;
+        }
+
+        &::before,
+        &::after {
+            content: '';
+
+            position: absolute;
+            left: 0;
+
+            transition: all .2s;
+        }
+
+        &::before {
+            top: -.8rem;
+        }
+
+        &::after {
+            top: .8rem;
+        }
+
+    }
+
+    // &__button:hover &__icon::before {
+    //     top: -1rem
+    // }
+
+    // &__button:hover &__icon::after {
+    //     top: 1rem
+    // }
+
+    &__button:not(.navigation__button__after-rotate):hover .navigation__icon::before {
+        top: -1rem
+    }
+
+    &__button:not(.navigation__button__after-rotate):hover .navigation__icon::after {
+        top: 1rem
+    }
+
+    &__button__after-rotate::after {
+        top: 0 !important;
+        transform: rotate(135deg);
+    }
+
+    &__button__before-rotate::before {
+        top: 0 !important;
+        transform: rotate(-135deg);
+    }
+}
